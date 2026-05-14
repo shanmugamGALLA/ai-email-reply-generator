@@ -25,7 +25,12 @@
 
 #     return response.choices[0].message.content
 
-def generate_email_reply(email_content, tone):
+from decouple import config
+
+OPEN_API_KEY = config("OPEN_API_KEY", default="")
+
+
+def generate_mock_reply(email_content, tone):
     return f"""
 Mock AI Reply (since API quota is unavailable):
 
@@ -40,3 +45,16 @@ We appreciate your message and will get back to you shortly regarding this matte
 Best regards,
 AI Assistant
 """
+
+
+def generate_email_reply(email_content, tone):
+    """
+    Main service function.
+    Later we can switch between:
+    - Mock AI
+    - OpenAI
+    - Other AI providers
+    """
+
+    # Currently using mock response
+    return generate_mock_reply(email_content, tone)

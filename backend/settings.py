@@ -15,6 +15,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
+from decouple import config
+
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -27,10 +29,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_8f&(pl(h+7eup!+*za&qid^q@5@&j7@#u(w59zk-s_o^3u@-h'
+#SECRET_KEY = 'django-insecure-_8f&(pl(h+7eup!+*za&qid^q@5@&j7@#u(w59zk-s_o^3u@-h'
+
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -38,6 +43,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    'corsheaders',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +55,7 @@ INSTALLED_APPS = [
     
     'rest_framework',
     'rest_framework_simplejwt',
-    'corsheaders',
+    
     
     'authentication',
     'email_generator',
@@ -144,3 +152,10 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+# from datetime import timedelta
+
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(hours=24),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+# }
