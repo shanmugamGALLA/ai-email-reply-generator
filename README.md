@@ -2,8 +2,30 @@
 
 AI Email Reply Generator is a full-stack SaaS-style web application that helps users generate professional AI-powered email replies using OpenRouter AI models. Users can create accounts, generate replies in multiple tones, manage reply history, and reset passwords using security questions.
 
----
+## Live Demo
 
+### Frontend
+https://ai-email-reply-generator-zeta.vercel.app
+
+### Backend API
+https://ai-email-reply-generator-1gzs.onrender.com
+
+---
+## Screenshots
+
+### Landing Page
+
+![Landing Page](screenshots/landing-page.png)
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### History Page
+
+![History Page](screenshots/history-page.png)
+
+---
 ## Features
 
 ### Authentication
